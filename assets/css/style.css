@@ -1,0 +1,38 @@
+body {
+    background-image: url("../images/gray_jean.png");
+    font-family: 'Heebo', sans-serif;
+}
+
+.jumbotron {
+    background-color: steelblue;
+    color: white;
+    text-align: center;
+}
+
+h1 {
+    font-family: 'Volkhov', serif;
+}
+
+h5 {
+    background-color: steelblue;
+    color: white;
+    padding: 10px;
+    font-family: 'Heebo', sans-serif;
+}
+
+#submit-button {
+    background-color: steelblue;
+    color: white;
+}
+
+form {
+    padding: 20px;
+    border: 1px solid lightgray;
+    margin-bottom: 40px;
+    background-color: white;
+}
+
+.table {
+    border: 1px solid lightgray;
+    background-color: white;
+}
