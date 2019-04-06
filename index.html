@@ -17,11 +17,15 @@
     <!-- Links to Google Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Heebo|Volkhov" rel="stylesheet">
 
+    <!-- Links to Firebase -->
+    <script src="https://www.gstatic.com/firebasejs/5.9.3/firebase.js"></script>
+    
     <!-- Links to jQuery -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
     <!-- Links to JavaScript -->
     <script src="assets/javascript/app.js"></script>
+
 
 </head>
 
@@ -49,7 +53,7 @@
         <div class="col-8">
             <!-- Table for current train schedule -->
             <h5>Current Train Schedule</h5>
-            <table class="table">
+            <table class="table" id="train-table">
                 <thead class="thead-light">
                     <tr>
                         <th scope="col">Train Name</th>
