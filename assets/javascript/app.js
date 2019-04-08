@@ -16,6 +16,7 @@ var database = firebase.database();
 
 // Creates click event when user clicks submit button 
 $("#submit-button").on("click", function (event) {
+    // Prevents page from being reloaded
     event.preventDefault();
     // Gets input values
     var trainName = $("#train-name").val().trim();
@@ -26,10 +27,10 @@ $("#submit-button").on("click", function (event) {
 // Creates local "temporary" object for holding train data
 var trainData = {
 
-      FBtrainName: trainName,
-      FBdestination: destination,
-      FBfirstTrain: firstTrain,
-      FBfrequency: frequency,
+      trainName: trainName,
+      destination: destination,
+      firstTrain: firstTrain,
+      frequency: frequency,
       dateAdded:
       firebase.database.ServerValue.TIMESTAMP
 };
@@ -38,7 +39,7 @@ var trainData = {
 database.ref().push(trainData);
 
 // Alerts user train data has been added
-alert("Train data successfully added");
+alert("Train data successfully added!");
 
 // Clears text boxes
 $("#train-name").val("");
@@ -46,26 +47,13 @@ $("#destination").val("");
 $("#first-train").val("");
 $("#frequency").val("");
 
-// Creates new row for train data
-var newRow = $("<tr>").append(
-  $("<td>").text(trainName),
-  $("<td>").text(destination),
-  $("<td>").text(firstTrain),
-  $("<td>").text(frequency),
-);
-
-// Appends the new row to the table
-$("#train-table > tbody").append(newRow);
-
 // Adds child snapshot to database
 database.ref().on("child_added", function(childSnapshot) {
-  // Logs everything from child snapshot
-  console.log(childSnapshot.val());
-  console.log(childSnapshot.val().FBtrainName);
-  console.log(childSnapshot.val().FBdestination);
-  console.log(childSnapshot.val().FBfirstTrain);
-  console.log(childSnapshot.val().FBfrequency);
-  var key = childSnapshot.key;
+// Variables for child snapshot
+var trainName = childSnapshot.val().trainName;
+var destination = childSnapshot.val().destination;
+var frequency = childSnapshot.val().frequency;
+var firstTime = childSnapshot.val().firstTime;
 
 // Moment JS Code
 // Creates variable for train frequency
@@ -98,20 +86,18 @@ console.log("MINUTES TILL TRAIN: " + minutesNextTrain);
 var nextTrain = moment().add(minutesNextTrain, "minutes");
 console.log("Arrival time: " + moment(nextTrain).format("hh:mm"));
 
+// Creates new row for train data
 var newRow = $("<tr>").append(
-  $("<td>").text(trainName),
-  $("<td>").text(destination),
-  $("<td>").text(trainFrequency),
-  $("<td>").text(moment(nextTrain).format("hh:mm A")),
-  $("<td>").text(minutesNextTrain)
+$("<td>").text(trainName),
+$("<td>").text(destination),
+$("<td>").text(frequency),
+$("<td>").text(nextTrain),
+$("<td>").text(minutesNextTrain)
 );
 
-// Appends new row to table
-$("#train-table > tbody").append(newRow);  
+// Appends the new row to the train table
+$("#train-table > tbody").append(newRow);
 
-});
-
-
-});
-
-});
+})
+})
+})
