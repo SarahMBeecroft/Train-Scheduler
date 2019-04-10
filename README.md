@@ -5,3 +5,4 @@ Train schedule application that incorporates Firebase to store and retrieve all 
 Users can enter a train name, destination, frequency, and first arrival time into the app form, before hitting submit. Once the user submits their data, it is automatically added to the table above. 
 
 #### Link to app: 
+https://sarahmbeecroft.github.io/Train-Scheduler/.

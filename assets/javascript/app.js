@@ -16,8 +16,10 @@ var database = firebase.database();
 
 // Creates click event when user clicks submit button 
 $("#submit-button").on("click", function (event) {
+
     // Prevents page from being reloaded
     event.preventDefault();
+
     // Gets input values
     var trainName = $("#train-name").val().trim();
     var destination = $("#destination").val().trim();
@@ -46,6 +48,8 @@ $("#train-name").val("");
 $("#destination").val("");
 $("#first-train").val("");
 $("#frequency").val("");
+
+});
 
 // Adds child snapshot to database
 database.ref().on("child_added", function(childSnapshot) {
@@ -98,6 +102,7 @@ $("<td>").text(minutesNextTrain)
 // Appends the new row to the train table
 $("#train-table > tbody").append(newRow);
 
+
 })
 })
-})
+
